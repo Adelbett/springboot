@@ -40,4 +40,12 @@ public class RegistrationController {
         regService.deleteRegistration(numRegistration);
     }
 
+    @PostMapping ("assignRegistrationToCourse/{numReg}/{numCourse}")
+    public Registration assignRegistrationToCourse( @PathVariable long numReg, @PathVariable long numCourse){
+        return regService.assignRegistrationToCourse(numReg, numCourse);
+    }
+
+
+
+
 }

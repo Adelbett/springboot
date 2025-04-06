@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.adelbettaiebarctic3.Repos.subscriptionRepository;
 import tn.esprit.adelbettaiebarctic3.entites.Subscription;
+import tn.esprit.adelbettaiebarctic3.entites.TypeSubscription;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class SubscriptionService implements  ISubscriptionService{
@@ -37,4 +40,15 @@ public class SubscriptionService implements  ISubscriptionService{
     public List<Subscription> retrieveAll() {
         return subRepo.findAll();
     }
+
+    @Override
+    public Set<Subscription> getSubscriptionByTypeSub(TypeSubscription type) {
+        return subRepo.getSubscriptionByTypeSub(type);
+    }
+
+    @Override
+    public List<Subscription> findSubscriptionsByDates(LocalDate startDate, LocalDate endDate) {
+        return subRepo.findByStartDateGreaterThanEqualAndEndDateLessThanEqual(startDate, endDate);
+    }
+
 }
